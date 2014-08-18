@@ -33,6 +33,7 @@ execute_remotely "apt-get update && apt-get install -y --force-yes python3"
 
 msg "Sweet!"
 msg "The user ${USER} can ssh the remote $SERVER as root and use Fabric"
-
+msg "Run"
+msg "fab --user=root"
 
 
