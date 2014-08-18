@@ -19,8 +19,12 @@ function log() {
     msg "> ${1}"
 }
 
+function execute_remotely() {
+    ssh root@${SERVER} $1
+}
+
 log "Setting permissions on remote server authorizing ${USER}'s ssh key"
-cat ~/.ssh/id_rsa.pub | ssh root@${SERVER} "mkdir -p ~/.ssh; cat > ~/.ssh/authorized_keys"
+cat ~/.ssh/id_rsa.pub | execute_remotely "mkdir -p ~/.ssh; cat > ~/.ssh/authorized_keys"
 
 msg "Sweet!"
 msg "The user ${USER} can ssh the remote $SERVER as root"
