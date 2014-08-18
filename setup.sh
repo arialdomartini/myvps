@@ -26,8 +26,13 @@ function execute_remotely() {
 log "Setting permissions on remote server authorizing ${USER}'s ssh key"
 cat ~/.ssh/id_rsa.pub | execute_remotely "mkdir -p ~/.ssh; cat > ~/.ssh/authorized_keys"
 
+log "Installing the essential software to run Fabric"
+execute_remotely "apt-get update && apt-get install -y --force-yes python3"
+
+
+
 msg "Sweet!"
-msg "The user ${USER} can ssh the remote $SERVER as root"
+msg "The user ${USER} can ssh the remote $SERVER as root and use Fabric"
 
 
 
